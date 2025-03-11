@@ -1,0 +1,171 @@
+#snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Ne bloque pas les clics */
+    z-index: 1000;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    color: white;
+    font-size: 1em;
+    user-select: none;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+/* H1 */
+.h{
+    text-align: center;
+    margin-top: 10px;
+    color: coral;
+}
+span{
+    color: green;
+}
+
+/* Conteneur principal */
+.container {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Section actualités */
+.news-section {
+    flex: 2;
+    margin-right: 20px;
+}
+
+/* Carte d'actualité */
+.news-card {
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+    
+}
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-card img {
+    width: 40%; /* Ajuste la largeur de l’image */
+    height: auto;
+    object-fit: cover;
+}
+
+.news-content {
+    width: 60%; /* Ajuste la largeur du texte */
+    padding: 20px;
+}
+
+.news-content .date {
+    background: green;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.news-content h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.news-content p {
+    font-size: 1em;
+    color: #555;
+}
+
+.news-content a {
+    display: inline-block;
+    margin-top: 10px;
+    color: green;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.news-content a:hover {
+    text-decoration: underline;
+}
+
+/* Barre latérale */
+.sidebar {
+    flex: 1;
+}
+
+.sidebar .categories, .sidebar .recent-news {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.sidebar ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sidebar ul li .count {
+    background: #ddd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.sidebar .recent-news ul li {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar .recent-news ul li img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.sidebar .recent-news ul li a {
+    font-size: 1em;
+    font-weight: bold;
+    color: black;
+}
+
+.sidebar .recent-news ul li .date {
+    font-size: 0.8em;
+    color: #777;
+}
