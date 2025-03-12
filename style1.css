@@ -1,7 +1,6 @@
 /* Importation des polices Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-
 /* Style général */
 body {
     font-family: 'Arial', sans-serif;
@@ -10,6 +9,7 @@ body {
     padding: 0;
     line-height: 1.8;
     background-color: #f4f4f4;
+    overflow-x: hidden; /* Empêche le défilement horizontal */
 }
 
 /* Section Hero (Image et Titre d'accueil) */
@@ -30,6 +30,7 @@ body {
     transform: scale(0.8);
     animation: zoomFadeIn 2s ease-out forwards;
 }
+
 @keyframes zoomFadeIn {
     0% {
         opacity: 0;
@@ -44,7 +45,6 @@ body {
         transform: scale(1);
     }
 }    
-
 
 @keyframes float {
     0%, 100% {
@@ -137,7 +137,7 @@ p {
     padding-left: 20px;
 }
 
-
+/* Snowfall effect */
 #snow-container {
     position: fixed;
     top: 0;
@@ -160,5 +160,81 @@ p {
 @keyframes fall {
     to {
         transform: translateY(100vh);
+    }
+}
+
+/* ----- Responsive Design ----- */
+
+/* Pour les petits écrans (mobiles) */
+@media screen and (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .reasons-list li {
+        font-size: 0.9rem;
+    }
+
+    /* Image héroïque qui devient plus petite */
+    .hero-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    /* Snowflakes ajustés pour mobile */
+    .snowflake {
+        font-size: 0.8em;
+    }
+}
+
+/* Pour les très petits écrans (mobiles en mode portrait) */
+@media screen and (max-width: 480px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    .reasons-list li {
+        font-size: 0.8rem;
+        padding: 12px;
+    }
+
+    .hero-section {
+        padding: 70px 10px;
     }
 }

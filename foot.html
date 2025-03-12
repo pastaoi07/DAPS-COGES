@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-      .footer {
+.footer {
   background-color: #2c3e50; /* Couleur de fond */
   color: #ecf0f1; /* Couleur du texte */
   padding: 20px 0;
@@ -19,8 +19,9 @@
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Permet aux sections de se déplacer sur une nouvelle ligne si nécessaire */
 }
+
 .container h2 {
   margin-left: 130px;
 }
@@ -28,6 +29,7 @@
 .footer-section {
   flex: 1;
   margin: 0 20px;
+  min-width: 200px; /* Assure que les sections ne deviennent pas trop petites */
 }
 
 .footer-section h3 {
@@ -58,6 +60,41 @@
   padding-top: 10px;
   border-top: 1px solid #7f8c8d;
   margin-top: 20px;
+}
+
+/* Responsive Design pour les petits écrans */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Empile les sections verticalement */
+    align-items: center; /* Centre les sections */
+  }
+
+  .footer-section {
+    margin: 10px 0; /* Réduit l'espacement vertical entre les sections */
+    text-align: center; /* Centre le texte des sections */
+  }
+
+  .footer-section h3 {
+    font-size: 16px; /* Réduit la taille du titre sur mobile */
+  }
+
+  .footer-section a {
+    font-size: 14px; /* Réduit la taille des liens sur mobile */
+  }
+
+  .footer-bottom {
+    font-size: 12px; /* Réduit la taille de la police pour le copyright */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-section {
+    margin: 15px 0; /* Ajoute un peu plus d'espace entre les sections sur très petits écrans */
+  }
+
+  .footer-bottom {
+    font-size: 11px; /* Réduit encore la taille de la police sur très petits écrans */
+  }
 }
 
 

@@ -1,10 +1,11 @@
+/* Effet neige */
 #snow-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Ne bloque pas les clics */
+    pointer-events: none;
     z-index: 1000;
 }
 
@@ -22,13 +23,15 @@
         transform: translateY(100vh);
     }
 }
-/* H1 */
-.h{
+
+/* Style du titre principal */
+.h {
     text-align: center;
     margin-top: 10px;
     color: coral;
 }
-span{
+
+span {
     color: green;
 }
 
@@ -39,12 +42,14 @@ span{
     margin: auto;
     padding: 20px;
     transition: transform 0.3s ease-in-out;
+    flex-wrap: wrap; /* Permet au conteneur de se réorganiser sur les petits écrans */
 }
 
 /* Section actualités */
 .news-section {
     flex: 2;
     margin-right: 20px;
+    flex: 2 1 60%; /* Réduit l'espace sur les petits écrans */
 }
 
 /* Carte d'actualité */
@@ -56,20 +61,20 @@ span{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     transition: transform 0.3s ease-in-out;
-    
+    flex-direction: column; /* Colonne sur petits écrans */
 }
+
 .news-card:hover {
     transform: translateY(-5px);
 }
 
 .news-card img {
-    width: 40%; /* Ajuste la largeur de l’image */
+    width: 100%; /* Image prend toute la largeur */
     height: auto;
     object-fit: cover;
 }
 
 .news-content {
-    width: 60%; /* Ajuste la largeur du texte */
     padding: 20px;
 }
 
@@ -107,6 +112,8 @@ span{
 /* Barre latérale */
 .sidebar {
     flex: 1;
+    margin-left: 20px;
+    display: none; /* Cache la barre latérale sur petits écrans */
 }
 
 .sidebar .categories, .sidebar .recent-news {
@@ -168,4 +175,90 @@ span{
 .sidebar .recent-news ul li .date {
     font-size: 0.8em;
     color: #777;
+}
+
+/* Media Queries pour les petits écrans */
+
+/* Pour les écrans de taille moyenne (tablettes) */
+@media screen and (max-width: 1024px) {
+    .news-section {
+        flex: 1 1 100%; /* La section des actualités prend toute la largeur */
+        margin-right: 0;
+    }
+
+    .sidebar {
+        display: block; /* Afficher la barre latérale sur tablettes */
+        margin-left: 0;
+    }
+
+    .news-card {
+        flex-direction: row; /* Carte d'actualité en ligne sur tablette */
+    }
+
+    .news-card img {
+        width: 40%;
+    }
+
+    .news-content {
+        width: 60%;
+        padding: 15px;
+    }
+}
+
+/* Pour les écrans de petite taille (mobiles) */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Empile les éléments de la section actualités et de la barre latérale */
+        padding: 10px;
+    }
+
+    .news-card {
+        flex-direction: column; /* Met les cartes d'actualité en colonne */
+    }
+
+    .news-card img {
+        width: 100%;
+    }
+
+    .news-content {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .sidebar {
+        display: none; /* Masquer la barre latérale sur mobile */
+    }
+
+    /* Ajuster la taille des titres */
+    .news-content h2 {
+        font-size: 1.3em;
+    }
+
+    .news-content p {
+        font-size: 0.9em;
+    }
+}
+
+/* Pour les très petits écrans (mobiles en mode portrait) */
+@media screen and (max-width: 480px) {
+    .h {
+        font-size: 1.8em; /* Ajuster la taille du titre principal */
+    }
+
+    .news-content h2 {
+        font-size: 1.2em; /* Ajuster la taille du titre d'actualité */
+    }
+
+    .news-content p {
+        font-size: 0.9em; /* Ajuster la taille du texte */
+    }
+
+    .news-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .news-card {
+        margin-bottom: 10px;
+    }
 }

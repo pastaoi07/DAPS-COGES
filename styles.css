@@ -20,11 +20,11 @@ body, html {
 /* Grille des images */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Largeur minimum des images */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adapte automatiquement les colonnes */
     gap: 20px;
     padding: 20px;
     max-width: 1200px;
-    margin: 0 auto; /* Centre la galerie */
+    margin: 0 auto;
 }
 
 /* Conteneur des images */
@@ -32,6 +32,7 @@ body, html {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre pour un effet visuel */
 }
 
 /* Images avec animation au scroll */
@@ -43,7 +44,7 @@ body, html {
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-/* Texte sur l'image */
+/* Texte sur l'image (overlay) */
 .overlay {
     position: absolute;
     top: 50%;
@@ -71,14 +72,14 @@ body, html {
 }
 
 /* RESPONSIVE DESIGN : Ajustement pour mobile */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Plus petit sur mobile */
-        padding: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Moins large sur les tablettes */
+        padding: 15px;
     }
 
     .main-title {
-        font-size: 2.5rem;
+        font-size: 2.5rem; /* Taille plus petite pour le titre */
     }
 
     .overlay {
@@ -87,21 +88,38 @@ body, html {
     }
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Sur mobile, encore plus petit */
+        padding: 10px;
+    }
+
+    .main-title {
+        font-size: 2rem; /* Plus petit sur les petits écrans */
+    }
+
+    .overlay {
+        font-size: 0.9rem;
+        width: 90%;
+    }
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 1.5rem; /* Réduit encore plus la taille du titre sur très petits écrans */
+    }
+    
+    .image-container {
+        margin: 0 auto; /* Centrer les images sur petits écrans */
+    }
+
+    .overlay {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
 }
 
-
-/*  neige*/
+/*  neige */
 #snow-container {
     position: fixed;
     top: 0;
