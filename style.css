@@ -254,18 +254,7 @@ a {
     margin-left: 10px;
 }
 
-/* Responsivité pour des écrans plus petits */
-@media (max-width: 768px) {
-    .image-item {
-        width: 48%; /* Deux images par ligne */
-    }
-}
 
-@media (max-width: 480px) {
-    .image-item {
-        width: 100%; /* Une image par ligne */
-    }
-}
 
 
 
@@ -341,6 +330,72 @@ color: rgb(0, 16, 0);
     line-height: 1.6;
   }
 
+  /* Responsive Design pour la page mission */
+@media (max-width: 1200px) {
+    .missions-section h2 {
+        font-size: 2rem;
+    }
+
+    .mission {
+        padding: 15px;
+    }
+
+    .mission p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .missions-section {
+        padding: 30px 10px;
+    }
+
+    .missions-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .missions-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .mission {
+        padding: 10px;
+    }
+
+    .mission p {
+        font-size: 0.8rem;
+    }
+
+    .h2 {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .missions-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .missions-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .mission {
+        padding: 8px;
+    }
+
+    .mission p {
+        font-size: 0.75rem;
+    }
+
+    .h2 {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+    }
+}
   
  /* SECTION ACTUALITÉS */
  .ju{
@@ -582,92 +637,119 @@ color: rgb(0, 16, 0);
   100% { background: orange; }
 }
 
-/* responsive */
-@media (max-width: 768px) {
-  .nav {
-      flex-direction: column;
-      align-items: center;
-  }
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
 
-  .nav ul {
-      width: 100%;
-      text-align: center;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      background: rgba(0, 0, 0, 0.9);
-      display: none;
-      flex-direction: column;
-      padding: 10px 0;
-  }
+    .hero p {
+        font-size: 1.1rem;
+    }
 
-  .nav ul.active {
-      display: flex;
-  }
+    .carousel {
+        height: 400px;
+    }
 
-  .nav ul li {
-      width: 100%;
-      padding: 10px 0;
-  }
+    .news-card {
+        width: 45%;
+    }
 
-  .menu-toggle {
-      position: absolute;
-      right: 20px;
-      top: 15px;
-  }
+    .image-card {
+        width: 45%;
+    }
 }
 
 @media (max-width: 768px) {
-  .hero {
-      padding: 3rem 1rem;
-      text-align: center;
-  }
+    .hero {
+        padding: 3rem 0;
+    }
 
-  .hero h1 {
-      font-size: 2rem;
-  }
+    .hero h1 {
+        font-size: 2rem;
+    }
 
-  .hero p {
-      font-size: 1rem;
-  }
+    .hero p {
+        font-size: 1rem;
+    }
 
-  .container {
-      width: 90%;
-  }
+    .carousel {
+        height: 300px;
+    }
 
-  .carousel {
-      height: 300px;
-  }
+    .coges-info h2 {
+        font-size: 1.8rem;
+    }
 
-  .image-gallery {
-      flex-direction: column;
-      align-items: center;
-  }
+    .coges-info p {
+        font-size: 1rem;
+    }
 
-  .image-item {
-      width: 90%;
-  }
+    .news-card {
+        width: 100%;
+    }
+
+    .image-card {
+        width: 100%;
+    }
+
+    .images-section h2 {
+        left: 0;
+        flex-direction: column;
+    }
+
+    .images-section h2 .ligne {
+        margin: 5px 0;
+    }
+
+    .news-container, .images-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .plus-actualites, .plus-images {
+        margin-top: 20px;
+    }
 }
 
 @media (max-width: 480px) {
-  .hero {
-      padding: 2rem 1rem;
-  }
+    .hero {
+        padding: 2rem 0;
+    }
 
-  .hero h1 {
-      font-size: 1.8rem;
-  }
+    .hero h1 {
+        font-size: 1.8rem;
+    }
 
-  .hero p {
-      font-size: 0.9rem;
-  }
+    .hero p {
+        font-size: 0.9rem;
+    }
 
-  .image-item {
-      width: 100%;
-  }
+    .carousel {
+        height: 200px;
+    }
 
-  .carousel {
-      height: 250px;
-  }
+    .coges-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .coges-info p {
+        font-size: 0.9rem;
+    }
+
+    .news-card img, .image-card img {
+        height: 150px;
+    }
+
+    .news-content h3 {
+        font-size: 14px;
+    }
+
+    .news-content .date {
+        font-size: 12px;
+    }
+
+    .plus-actualites a, .plus-images a {
+        font-size: 14px;
+    }
 }
-

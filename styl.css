@@ -169,3 +169,77 @@ span{
     font-size: 0.8em;
     color: #777;
 }
+
+/* Responsive Design pour la page actualités */
+@media (max-width: 1200px) {
+    .news-card {
+        flex-direction: column;
+    }
+
+    .news-card img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .news-content {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .news-content h2 {
+        font-size: 1.3em;
+    }
+
+    .news-content p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .news-section {
+        margin-right: 0;
+    }
+
+    .news-card {
+        margin-bottom: 15px;
+    }
+
+    .news-content h2 {
+        font-size: 1.2em;
+    }
+
+    .news-content p {
+        font-size: 0.8em;
+    }
+
+    .h {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-card img {
+        height: 150px;
+    }
+
+    .news-content h2 {
+        font-size: 1.1em;
+    }
+
+    .news-content p {
+        font-size: 0.75em;
+    }
+
+    .h {
+        font-size: 1.5rem;
+    }
+
+    .news-content .date {
+        font-size: 12px;
+    }
+}

@@ -14,3 +14,21 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(element);
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll(".image");
+
+    images.forEach(image => {
+        image.addEventListener("click", function () {
+            const zoomedImage = document.createElement("div");
+            zoomedImage.classList.add("zoomed-image");
+            zoomedImage.innerHTML = `<img src="${this.src}" class="zoom-img">`;
+
+            // Fermer l'image en cliquant dessus
+            zoomedImage.addEventListener("click", function () {
+                zoomedImage.remove();
+            });
+
+            document.body.appendChild(zoomedImage);
+        });
+    });
+});
