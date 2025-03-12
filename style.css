@@ -274,30 +274,30 @@ text-align: center;
 font-size: 40px;
 color: rgb(0, 16, 0);
   }
- /* Section Missions - Responsive */
+  /* Section des missions */
 .missions-section {
     background-color: #f4f4f4;
     padding: 50px 20px;
     text-align: center;
-}
-
-.missions-section h2 {
+    gap: 20px;
+  }
+  
+  .missions-section h2 {
     font-size: 2.5rem;
     color: #2c3e50;
     margin-bottom: 30px;
-}
-
-/* Conteneur des missions : flexible */
-.missions-container {
+  }
+  
+  .missions-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-/* Style de chaque mission */
-.mission {
+    cursor: pointer;
+  }
+  
+  .mission {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -305,72 +305,41 @@ color: rgb(0, 16, 0);
     text-align: left;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
-}
-
+  }
+  
+  .mission:hover {
+    animation: randomMove 0.3s ease-out forwards;
+  }
+  
+/* Ajout de l'effet aléatoire */
 .mission:hover {
-    transform: translateY(-5px);
+  animation: randomMove 0.3s ease-out forwards;
 }
 
-/* Numérotation animée */
-.h2 {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    font-weight: bold;
-    color: white;
-    border-radius: 50%;
-    animation: changeColor 10s infinite alternate;
+/* Animation aléatoire */
+@keyframes randomMove {
+  from {
+      transform: translate(0, 0) rotate(0deg);
+  }
+  to {
+      transform: translate(
+          calc((random() - 0.5) * 40px), 
+          calc((random() - 0.5) * 40px)
+      ) rotate(calc((random() - 0.5) * 10deg));
+  }
 }
-
-/* Couleur changeante */
-@keyframes changeColor {
-    0% { background: rgb(255, 0, 0); }
-    33% { background: #ffffff; }
-    66% { background: rgb(46, 161, 0); }
-    100% { background: orange; }
-}
-
-/* 🔹 RESPONSIVE DESIGN 🔹 */
-
-/* Tablettes et petits écrans */
-@media (max-width: 768px) {
-    .missions-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .mission {
-        text-align: center;
-        padding: 15px;
-    }
-    
-    .h2 {
-        font-size: 25px;
-        width: 40px;
-        height: 40px;
-    }
-}
-
-/* Mobiles */
-@media (max-width: 480px) {
-    .missions-section h2 {
-        font-size: 2rem;
-    }
-
-    .mission {
-        padding: 10px;
-        font-size: 0.9rem;
-    }
-    
-    .h2 {
-        font-size: 20px;
-        width: 35px;
-        height: 35px;
-    }
-}
+  .mission img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .mission p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+  }
 
   
  /* SECTION ACTUALITÉS */
@@ -567,8 +536,7 @@ color: rgb(0, 16, 0);
   
 
 
- /* Neige */
-#snow-container {
+  #snow-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -576,42 +544,23 @@ color: rgb(0, 16, 0);
     height: 100%;
     pointer-events: none; /* Ne bloque pas les clics */
     z-index: 1000;
-    overflow: hidden;
-  }
-  
-  .snowflake {
+}
+
+.snowflake {
     position: absolute;
     top: -10px;
     color: white;
     font-size: 1em;
     user-select: none;
     animation: fall linear infinite;
-    opacity: 0.8; /* Ajuste l'opacité des flocons pour donner un effet plus doux */
-  }
-  
-  /* Animation de la neige qui tombe */
-  @keyframes fall {
-    0% {
-      transform: translateY(-10px) rotate(0deg); /* Commence en haut avec une légère rotation */
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
     }
-    100% {
-      transform: translateY(100vh) rotate(360deg); /* Finit en bas de l'écran, avec rotation */
-    }
-  }
-  
-  /* Réduire la taille des flocons sur les petits écrans */
-  @media (max-width: 768px) {
-    .snowflake {
-      font-size: 0.8em; /* Réduit la taille des flocons pour les petits écrans */
-    }
-  }
-  
-  /* Animation améliorée pour des effets de neige réalistes */
-  .snowflake {
-    animation-duration: calc(10s + 10s * (random(1) * 2)); /* Animation variable pour la vitesse */
-    animation-delay: calc(-10s * random(1)); /* Délais aléatoires pour chaque flocon */
-  }
-  
+}
+
 .h2 {
   width: 50px;
   height: 50px;
@@ -633,134 +582,92 @@ color: rgb(0, 16, 0);
   100% { background: orange; }
 }
 
-/* RESPONSIVE DESIGN */
-
-/* Ajustement global des polices et espacements */
-@media (max-width: 1024px) {
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    .coges-info h2 {
-        font-size: 2rem;
-    }
-
-    .coges-info p {
-        font-size: 1rem;
-    }
-}
-
-/* Mobile - Écrans jusqu'à 768px */
+/* responsive */
 @media (max-width: 768px) {
-    .container {
-        width: 95%;
-    }
+  .nav {
+      flex-direction: column;
+      align-items: center;
+  }
 
-    /* Section Héros */
-    .hero {
-        padding: 3rem 1rem;
-    }
+  .nav ul {
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      flex-direction: column;
+      padding: 10px 0;
+  }
 
-    .hero h1 {
-        font-size: 2rem;
-    }
+  .nav ul.active {
+      display: flex;
+  }
 
-    .hero p {
-        font-size: 1rem;
-    }
+  .nav ul li {
+      width: 100%;
+      padding: 10px 0;
+  }
 
-    /* Carrousel d'images */
-    .carousel {
-        height: 250px;
-    }
-
-    /* Section COGES */
-    .coges-info {
-        padding: 2rem 1rem;
-    }
-
-    .coges-info h2 {
-        font-size: 1.8rem;
-    }
-
-    .coges-info p {
-        font-size: 0.95rem;
-    }
-
-    /* Section Actualités */
-    .actualites .news-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .news-card {
-        width: 90%;
-    }
-
-    /* Section Images */
-    .images-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .image-card {
-        width: 90%;
-    }
-
-    /* Images alignées en colonne */
-    .missions-container {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    /* Section Images et Texte au survol */
-    .images-section h2 {
-        left: 0%;
-        font-size: 22px;
-    }
-
-    .images-section h2 .ligne {
-        width: 30px;
-    }
+  .menu-toggle {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+  }
 }
 
-/* Mobile - Écrans jusqu'à 480px */
+@media (max-width: 768px) {
+  .hero {
+      padding: 3rem 1rem;
+      text-align: center;
+  }
+
+  .hero h1 {
+      font-size: 2rem;
+  }
+
+  .hero p {
+      font-size: 1rem;
+  }
+
+  .container {
+      width: 90%;
+  }
+
+  .carousel {
+      height: 300px;
+  }
+
+  .image-gallery {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .image-item {
+      width: 90%;
+  }
+}
+
 @media (max-width: 480px) {
-    /* Ajustement global */
-    body {
-        font-size: 0.9rem;
-    }
+  .hero {
+      padding: 2rem 1rem;
+  }
 
-    .hero h1 {
-        font-size: 1.8rem;
-    }
+  .hero h1 {
+      font-size: 1.8rem;
+  }
 
-    .hero p {
-        font-size: 0.9rem;
-    }
+  .hero p {
+      font-size: 0.9rem;
+  }
 
-    /* Carrousel */
-    .carousel {
-        height: 200px;
-    }
+  .image-item {
+      width: 100%;
+  }
 
-    /* Section Actualités */
-    .news-card {
-        width: 100%;
-    }
-
-    /* Section Images */
-    .image-card {
-        width: 100%;
-    }
-
-    /* Ajustement des titres */
-    h2 {
-        font-size: 1.5rem;
-    }
+  .carousel {
+      height: 250px;
+  }
 }
+

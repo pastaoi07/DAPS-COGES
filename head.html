@@ -235,34 +235,52 @@
     </header> 
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const burgerMenu = document.getElementById("burger-menu");
-            const navMenu = document.getElementById("nav-menu");
-            const dropdown = document.querySelector(".dropdown");
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM fully loaded! ✅");
 
-            // Toggle menu burger
-            burgerMenu.addEventListener("click", () => {
-                console.log("Burger clicked!"); // Vérifie si l'événement est déclenché
-                navMenu.classList.toggle("active");
-                burgerMenu.classList.toggle("active");
-            });
+    const burgerMenu = document.getElementById("burger-menu");
+    const navMenu = document.getElementById("nav-menu");
 
-            // Toggle dropdown sur mobile
-            dropdown.addEventListener("click", (e) => {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    dropdown.classList.toggle("active");
-                }
-            });
+    console.log("Burger Menu Element:", burgerMenu);
+    console.log("Nav Menu Element:", navMenu);
 
-            // Fermer le menu lors du clic en dehors
-            document.addEventListener("click", (e) => {
-                if (!navMenu.contains(e.target) && !burgerMenu.contains(e.target)) {
-                    navMenu.classList.remove("active");
-                    burgerMenu.classList.remove("active");
-                }
+    // Vérifier si le menu était ouvert avant le rechargement
+    if (localStorage.getItem("menuOpen") === "true") {
+        console.log("Le menu était ouvert, on le rouvre.");
+        navMenu.classList.add("active");
+    }
+
+    if (burgerMenu && navMenu) {
+        burgerMenu.addEventListener("click", () => {
+            console.log("Burger clicked! 🍔");
+
+            // Afficher ou cacher le menu
+            navMenu.classList.toggle("active");
+
+            // Sauvegarde de l'état du menu dans localStorage
+            if (navMenu.classList.contains("active")) {
+                localStorage.setItem("menuOpen", "true");
+                console.log("Menu ouvert ✅");
+            } else {
+                localStorage.setItem("menuOpen", "false");
+                console.log("Menu fermé ❌");
+            }
+        });
+
+        // Fermer le menu lorsqu'on clique sur un lien
+        const menuLinks = document.querySelectorAll(".nav ul li a");
+        menuLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                console.log("Lien cliqué : " + link.href);
+                localStorage.setItem("menuOpen", "false");
             });
         });
+    } else {
+        console.error("❌ Burger ou menu introuvable !");
+    }
+});
+
+
     </script>
 
 </body>

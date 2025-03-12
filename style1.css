@@ -1,6 +1,7 @@
 /* Importation des polices Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+
 /* Style général */
 body {
     font-family: 'Arial', sans-serif;
@@ -9,7 +10,6 @@ body {
     padding: 0;
     line-height: 1.8;
     background-color: #f4f4f4;
-    overflow-x: hidden; /* Empêche le défilement horizontal */
 }
 
 /* Section Hero (Image et Titre d'accueil) */
@@ -30,7 +30,6 @@ body {
     transform: scale(0.8);
     animation: zoomFadeIn 2s ease-out forwards;
 }
-
 @keyframes zoomFadeIn {
     0% {
         opacity: 0;
@@ -45,6 +44,7 @@ body {
         transform: scale(1);
     }
 }    
+
 
 @keyframes float {
     0%, 100% {
@@ -137,7 +137,7 @@ p {
     padding-left: 20px;
 }
 
-/* Neige */
+
 #snow-container {
     position: fixed;
     top: 0;
@@ -146,115 +146,19 @@ p {
     height: 100%;
     pointer-events: none; /* Ne bloque pas les clics */
     z-index: 1000;
-    overflow: hidden;
-  }
-  
-  .snowflake {
+}
+
+.snowflake {
     position: absolute;
     top: -10px;
     color: white;
     font-size: 1em;
     user-select: none;
     animation: fall linear infinite;
-    opacity: 0.8; /* Ajuste l'opacité des flocons pour donner un effet plus doux */
-  }
-  
-  /* Animation de la neige qui tombe */
-  @keyframes fall {
-    0% {
-      transform: translateY(-10px) rotate(0deg); /* Commence en haut avec une légère rotation */
-    }
-    100% {
-      transform: translateY(100vh) rotate(360deg); /* Finit en bas de l'écran, avec rotation */
-    }
-  }
-  
-  /* Réduire la taille des flocons sur les petits écrans */
-  @media (max-width: 768px) {
-    .snowflake {
-      font-size: 0.8em; /* Réduit la taille des flocons pour les petits écrans */
-    }
-  }
-  
-  /* Animation améliorée pour des effets de neige réalistes */
-  .snowflake {
-    animation-duration: calc(10s + 10s * (random(1) * 2)); /* Animation variable pour la vitesse */
-    animation-delay: calc(-10s * random(1)); /* Délais aléatoires pour chaque flocon */
-  }
-  
-
-/* ----- Responsive Design ----- */
-
-/* Pour les petits écrans (mobiles) */
-@media screen and (max-width: 768px) {
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-
-    h3 {
-        font-size: 1.5rem;
-    }
-
-    p {
-        font-size: 1rem;
-    }
-
-    .reasons-list li {
-        font-size: 0.9rem;
-    }
-
-    /* Image héroïque qui devient plus petite */
-    .hero-image {
-        width: 100%;
-        height: auto;
-    }
-
-    .container {
-        padding: 0 10px;
-    }
-
-    /* Snowflakes ajustés pour mobile */
-    .snowflake {
-        font-size: 0.8em;
-    }
 }
 
-/* Pour les très petits écrans (mobiles en mode portrait) */
-@media screen and (max-width: 480px) {
-    .hero-title {
-        font-size: 1.5rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    h2 {
-        font-size: 1.8rem;
-    }
-
-    h3 {
-        font-size: 1.3rem;
-    }
-
-    p {
-        font-size: 0.9rem;
-    }
-
-    .reasons-list li {
-        font-size: 0.8rem;
-        padding: 12px;
-    }
-
-    .hero-section {
-        padding: 70px 10px;
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
     }
 }
