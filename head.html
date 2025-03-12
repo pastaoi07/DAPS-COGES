@@ -32,6 +32,7 @@
             padding: 10px 0;
             color: #fff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* Ajouté pour le positionnement du menu */
         }
 
         .container {
@@ -41,7 +42,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            
         }
 
         /* Logo */
@@ -83,53 +83,55 @@
         .nav ul li a:hover {
             color: #ffdd57;
         }
-/* Liste déroulante */
-.dropdown-content {
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    background-color: rgb(232, 21, 21);
-    min-width: 180px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    top: 100%;
-    left: 0;
-    transition: visibility 0.2s, opacity 0.2s ease-in-out;
-    flex-direction: column; 
-}
 
-.dropdown-content li {
-    border-bottom: 1px solid #ddd;
-}
+        /* Liste déroulante */
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            background-color: rgb(232, 21, 21);
+            min-width: 180px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            top: 100%;
+            left: 0;
+            transition: visibility 0.2s, opacity 0.2s ease-in-out;
+            flex-direction: column;
+        }
 
-.dropdown-content li:last-child {
-    border-bottom: none;
-}
+        .dropdown-content li {
+            border-bottom: 1px solid #ddd;
+        }
 
-.dropdown-content a {
-    color: black;
-    padding: 10px;
-    display: block;
-}
+        .dropdown-content li:last-child {
+            border-bottom: none;
+        }
 
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
+        .dropdown-content a {
+            color: black;
+            padding: 10px;
+            display: block;
+        }
 
-/* Afficher la liste déroulante uniquement au survol */
-.dropdown:hover .dropdown-content {
-    visibility: visible;
-    opacity: 1;
-}
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Afficher la liste déroulante uniquement au survol */
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+        }
 
         /* MENU BURGER */
         .burger {
             display: none;
             font-size: 28px;
             cursor: pointer;
+            color: #000;
         }
 
         /* RESPONSIVE DESIGN */
@@ -140,17 +142,17 @@
 
             .nav {
                 position: absolute;
-                top: 60px;
+                top: 100%; /* Ajusté pour éviter de chevaucher le header */
                 right: 0;
                 width: 100%;
                 background: rgba(0, 0, 0, 0.9);
                 display: none;
                 transition: all 0.3s ease-in-out;
+                z-index: 1000; /* Assurer que le menu est au-dessus du contenu */
             }
 
             .nav.active {
                 display: block;
-                transform: translateY(0);
             }
 
             .nav ul {
@@ -165,6 +167,7 @@
 
             .nav ul li a {
                 font-size: 18px;
+                color: #fff; /* Couleur du texte pour mobile */
             }
 
             /* Affichage mobile : ouverture de la liste déroulante au clic */
@@ -173,10 +176,20 @@
                 display: none;
                 background-color: transparent;
                 box-shadow: none;
+                padding-left: 20px; /* Indentation pour les sous-menus */
             }
 
             .dropdown.active .dropdown-content {
                 display: block;
+            }
+
+            /* Style des liens du dropdown sur mobile */
+            .dropdown-content a {
+                color: #fff; /* Couleur du texte pour les sous-menus */
+            }
+
+            .dropdown-content a:hover {
+                background-color: rgba(255, 255, 255, 0.1); /* Effet de survol */
             }
         }
     </style>
@@ -212,7 +225,6 @@
                         <ul class="dropdown-content">
                             <li><a href="mission.html">Mission des COGES</a></li>
                             <li><a href="histoire.html">Histoire des COGES</a></li>
-                            <!-- <li><a href="Actualité.html">Actualité</a></li> -->
                         </ul>
                     </li>
                     <li><a href="Actualité.html">Actualité</a></li>
@@ -230,7 +242,9 @@
 
             // Toggle menu burger
             burgerMenu.addEventListener("click", () => {
+                console.log("Burger clicked!"); // Vérifie si l'événement est déclenché
                 navMenu.classList.toggle("active");
+                burgerMenu.classList.toggle("active");
             });
 
             // Toggle dropdown sur mobile
@@ -238,6 +252,14 @@
                 if (window.innerWidth <= 768) {
                     e.preventDefault();
                     dropdown.classList.toggle("active");
+                }
+            });
+
+            // Fermer le menu lors du clic en dehors
+            document.addEventListener("click", (e) => {
+                if (!navMenu.contains(e.target) && !burgerMenu.contains(e.target)) {
+                    navMenu.classList.remove("active");
+                    burgerMenu.classList.remove("active");
                 }
             });
         });
