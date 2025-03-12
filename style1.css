@@ -137,7 +137,7 @@ p {
     padding-left: 20px;
 }
 
-/* Snowfall effect */
+/* Neige */
 #snow-container {
     position: fixed;
     top: 0;
@@ -146,22 +146,42 @@ p {
     height: 100%;
     pointer-events: none; /* Ne bloque pas les clics */
     z-index: 1000;
-}
-
-.snowflake {
+    overflow: hidden;
+  }
+  
+  .snowflake {
     position: absolute;
     top: -10px;
     color: white;
     font-size: 1em;
     user-select: none;
     animation: fall linear infinite;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(100vh);
+    opacity: 0.8; /* Ajuste l'opacité des flocons pour donner un effet plus doux */
+  }
+  
+  /* Animation de la neige qui tombe */
+  @keyframes fall {
+    0% {
+      transform: translateY(-10px) rotate(0deg); /* Commence en haut avec une légère rotation */
     }
-}
+    100% {
+      transform: translateY(100vh) rotate(360deg); /* Finit en bas de l'écran, avec rotation */
+    }
+  }
+  
+  /* Réduire la taille des flocons sur les petits écrans */
+  @media (max-width: 768px) {
+    .snowflake {
+      font-size: 0.8em; /* Réduit la taille des flocons pour les petits écrans */
+    }
+  }
+  
+  /* Animation améliorée pour des effets de neige réalistes */
+  .snowflake {
+    animation-duration: calc(10s + 10s * (random(1) * 2)); /* Animation variable pour la vitesse */
+    animation-delay: calc(-10s * random(1)); /* Délais aléatoires pour chaque flocon */
+  }
+  
 
 /* ----- Responsive Design ----- */
 
